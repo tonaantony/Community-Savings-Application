@@ -1,0 +1,34 @@
+<!-- Header -->
+<nav class="header">
+  <div class="app-name">FINCIRCLE</div>
+  <div class="nav-links">
+    <a (click)="scrollToSection('home')">Home</a>
+    <a (click)="scrollToSection('about')">About</a>
+    <a [routerLink]="['/authenticate']">Login</a>
+  </div>
+</nav>
+
+<!-- Content sections -->
+<div class="content">
+  <section id="home" class="section">
+    <div class="home-container">
+      <div class="tagline">
+        Empowering Communities,<br>One Contribution at a Time
+      </div>
+      <div class="image-container">
+        <img src="assets/chit.jpg" alt="Chit Fund">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="about-container">
+      <h2>About</h2>
+      <p>
+        A secure and transparent platform for managing collective savings groups, 
+        automating fund allocations and ensuring financial transparency through 
+        advanced features like AI Insights and notifications.
+      </p>
+    </div>
+  </section>
+</div>
