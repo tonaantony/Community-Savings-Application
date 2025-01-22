@@ -1,0 +1,63 @@
+<div class="login-container">
+  <h2>Login</h2>
+  
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        [(ngModel)]="authenticateData.username" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        [(ngModel)]="authenticateData.password" 
+        required>
+    </div>
+
+    <div class="user-type">
+      <label>Login as:</label>
+      <div class="radio-group">
+        <input 
+          type="radio" 
+          id="user" 
+          name="userType" 
+          value="user" 
+          [(ngModel)]="authenticateData.userType">
+        <label for="user">User</label>
+
+        <input 
+          type="radio" 
+          id="organizer" 
+          name="userType" 
+          value="organizer" 
+          [(ngModel)]="authenticateData.userType">
+        <label for="organizer">Organizer</label>
+
+        <input 
+          type="radio" 
+          id="admin" 
+          name="userType" 
+          value="admin" 
+          [(ngModel)]="authenticateData.userType">
+        <label for="admin">Admin</label>
+      </div>
+    </div>
+
+    <button type="submit" class="login-btn">Login</button>
+  </form>
+
+  <!-- <div class="links">
+    <a (click)="goToResetPassword()">Forgot Password?</a> -->
+    <div class="signup-section">
+      <span>or</span>
+      <button (click)="goToSignup()" class="signup-btn">Signup</button>
+    </div>
+  </div>

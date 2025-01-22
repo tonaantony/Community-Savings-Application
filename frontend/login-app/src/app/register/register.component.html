@@ -1,0 +1,51 @@
+<div class="register-container">
+  <h2>Let's Get Started</h2>
+  
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        [(ngModel)]="registerData.email" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        [(ngModel)]="registerData.username" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        [(ngModel)]="registerData.password" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select 
+        id="role" 
+        name="role" 
+        [(ngModel)]="registerData.role" 
+        required>
+        <option value="">Select a role</option>
+        <option *ngFor="let role of roles" [value]="role">
+          {{role | titlecase}}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>
