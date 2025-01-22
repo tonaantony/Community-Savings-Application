@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    container_name: user-management-zookeeper
+    ports:
+      - "2182:2181"
+    environment:
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+    restart: always
+
+  kafka:
+    image: wurstmeister/kafka:latest
+    container_name: user-management-kafka
+    ports:
+      - "9096:9092"  # External port for accessing Kafka
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: user-management-zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://user-management-kafka:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092  # Listen on all available interfaces
+      KAFKA_BROKER_ID: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    restart: always
+
+networks:
+  default:
+    name: user-management-network
